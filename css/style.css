@@ -26,7 +26,7 @@ main {
     padding: 2rem 1rem;
 }
 
-.container {
+.conteiner-app {
     width: 100%;
     max-width: 900px;
     background: rgba(255, 255, 255, 0.9);
@@ -39,11 +39,11 @@ main {
     transition: transform 0.3s ease;
 }
 
-.container:hover {
+.conteiner-app:hover {
     transform: translateY(-2px);
 }
 
-.title, .footer-title {
+.titulo-pagina, .footer-title {
     color: #0f172a;
     margin-bottom: 1rem;
     font-size: 2.25rem;
@@ -51,20 +51,20 @@ main {
     letter-spacing: -0.02em;
 }
 
-.text {
+.descricao-pagina {
     margin-bottom: 2.5rem;
     color: #64748b;
     line-height: 1.6;
     font-size: 1.1rem;
 }
 
-.botoes {
+.grupo-botoes {
     display: flex;
     justify-content: center;
     gap: 1rem;
 }
 
-.btn {
+.botao {
     text-decoration: none;
     background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
     color: white;
@@ -81,13 +81,13 @@ main {
     justify-content: center;
 }
 
-.btn:hover {
+.botao:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(37, 99, 235, 0.5);
     background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
 }
 
-.formulario {
+.conteiner-formulario {
     width: 100%;
     max-width: 900px;
     text-align: left;
@@ -111,28 +111,28 @@ legend {
     border-radius: 6px;
 }
 
-.form-grid {
+.grade-formulario {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1.5rem;
 }
 
-.campo {
+.campo-formulario {
     display: flex;
     flex-direction: column;
     position: relative;
 }
 
-.campo label {
+.campo-formulario label {
     margin-bottom: 0.5rem;
     font-weight: 500;
     color: #475569;
     font-size: 0.9rem;
 }
 
-.campo input,
-.campo textarea,
-.campo select {
+.campo-formulario input,
+.campo-formulario textarea,
+.campo-formulario select {
     padding: 0.75rem 1rem;
     border: 1px solid #cbd5e1;
     border-radius: 8px;
@@ -144,24 +144,24 @@ legend {
     width: 100%;
 }
 
-.campo input:focus,
-.campo textarea:focus,
-.campo select:focus {
+.campo-formulario input:focus,
+.campo-formulario textarea:focus,
+.campo-formulario select:focus {
     border-color: #3b82f6;
     background-color: #fff;
     box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
-.full {
+.largura-total {
     grid-column: 1 / -1;
 }
 
-.secundario {
+.botao-secundario {
     background: linear-gradient(135deg, #64748b 0%, #475569 100%);
     box-shadow: 0 4px 14px 0 rgba(100, 116, 139, 0.39);
 }
 
-.secundario:hover {
+.botao-secundario:hover {
     background: linear-gradient(135deg, #475569 0%, #334155 100%);
     box-shadow: 0 6px 20px rgba(100, 116, 139, 0.5);
 }

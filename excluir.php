@@ -1,2 +1,17 @@
 <?php
-delete($pdo, "dados_pessoais", "id = ".$_GET["id"]);
+require_once("config/conexao.php");
+require_once("config/crud.php");
+
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    // Devido ao ON DELETE CASCADE no banco de dados, ao deletar de dados_pessoais,
+    // todas as outras informações (contatos, experiências, etc) também serão deletadas.
+    delete($pdo, "dados_pessoais", "id = $id");
+    
+    header("Location: listar_curriculos.php?sucesso=excluido");
+    exit;
+}
+
+header("Location: listar_curriculos.php");
+exit;
+?>

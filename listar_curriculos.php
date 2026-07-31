@@ -79,6 +79,7 @@ $curriculos = readAll($pdo, "dados_pessoais");
 
         <div class="botoes" style="justify-content: flex-start; margin-bottom: 30px;">
             <a href="cadastrar.php" class="btn"> + Novo Currículo</a>
+            <a href="index.php" class="btn secundario"> Voltar para Início</a>
         </div>
 
         <?php if (empty($curriculos)): ?>
