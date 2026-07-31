@@ -1,4 +1,4 @@
-<footer role="contentinfo">
+<footer>
 
     <p class="footer-text">
         Desenvolvido por <strong>Guilherme Silva</strong> &copy; 2026

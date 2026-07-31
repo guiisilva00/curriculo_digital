@@ -8,19 +8,20 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body class="pagina-inicial">
     <main>
-        <section class="container">
-            <h1 class="title">Currículo Digital</h1>
-            <p class="text">
+        <section class="conteiner-app hero-inicial">
+            <p class="selo-inicial">PLATAFORMA PESSOAL</p>
+            <h1 class="titulo-pagina">Currículo Digital</h1>
+            <p class="descricao-pagina">
                 Crie, organize e visualize seu currículo
                 de maneira simples.
             </p>
 
-            <div class="botoes">
-                <a href="cadastrar.php" class="btn">Novo Currículo</a>
-                <a href="listar_curriculos.php" class="btn secundario">Ver Currículos</a>
-            </div>
+            <nav class="grupo-botoes" aria-label="Ações principais">
+                <a href="cadastrar.php" class="botao">Novo Currículo</a>
+                <a href="listar_curriculos.php" class="botao botao-secundario">Ver Currículos</a>
+            </nav>
         </section>
 
     </main>

@@ -12,103 +12,50 @@ $curriculos = readAll($pdo, "dados_pessoais");
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Currículos</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 20px;
-            box-shadow: 0 4px 14px rgba(0,0,0,0.05);
-            border: 1px solid #e2e8f0;
-            text-align: left;
-            transition: transform 0.3s;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-        .card-title {
-            color: #0f172a;
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 5px;
-        }
-        .card-subtitle {
-            color: #64748b;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-        .card-actions {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-            border-top: 1px solid #f1f5f9;
-            padding-top: 15px;
-        }
-        .btn-small {
-            padding: 8px 15px;
-            font-size: 0.85rem;
-            border-radius: 6px;
-            text-decoration: none;
-            text-align: center;
-            color: white;
-            flex: 1;
-            transition: opacity 0.2s;
-        }
-        .btn-small:hover { opacity: 0.85; }
-        .btn-ver { background: #3b82f6; }
-        .btn-editar { background: #f59e0b; }
-        .btn-excluir { background: #ef4444; }
-    </style>
 </head>
-<body>
+<body class="pagina-listagem">
 <main>
-    <section class="container" style="max-width: 1000px;">
-        <h1 class="title">Currículos Cadastrados</h1>
+    <section class="conteiner-app conteiner-listagem">
+        <h1 class="titulo-pagina">Currículos Cadastrados</h1>
         
         <?php if(isset($_GET['sucesso'])): ?>
-            <div style="background: #dcfce3; color: #166534; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-weight: 500;">
+            <p class="mensagem-sucesso" role="status">
                 Operação realizada com sucesso!
-            </div>
+            </p>
         <?php endif; ?>
 
-        <div class="botoes" style="justify-content: flex-start; margin-bottom: 30px;">
-            <a href="cadastrar.php" class="btn"> + Novo Currículo</a>
-            <a href="index.php" class="btn secundario"> Voltar para Início</a>
-        </div>
+        <nav class="grupo-botoes acoes-listagem" aria-label="Ações da listagem">
+            <a href="cadastrar.php" class="botao"> + Novo Currículo</a>
+            <a href="index.php" class="botao botao-secundario"> Voltar para Início</a>
+        </nav>
 
         <?php if (empty($curriculos)): ?>
-            <p class="text">Nenhum currículo cadastrado ainda.</p>
+            <p class="estado-vazio">Nenhum currículo cadastrado ainda. Crie o primeiro para começar.</p>
         <?php else: ?>
-            <div class="cards-grid">
+            <section class="grade-curriculos" aria-label="Currículos cadastrados">
                 <?php foreach ($curriculos as $c): ?>
-                    <div class="card">
-                        <div class="card-title"><?= htmlspecialchars($c['nome']) ?></div>
-                        <div class="card-subtitle"><?= htmlspecialchars($c['cargo']) ?></div>
-                        <p style="color: #475569; font-size: 0.85rem; margin-bottom: 10px;">
-                            📍 <?= htmlspecialchars($c['cidade'] . ' - ' . $c['estado']) ?>
+                    <article class="cartao-curriculo">
+                        <h2 class="cartao-titulo"><?= htmlspecialchars($c['nome']) ?></h2>
+                        <p class="cartao-subtitulo"><?= htmlspecialchars($c['cargo']) ?></p>
+                        <p class="cartao-localizacao">
+                            <span aria-hidden="true">📍</span>
+                            <?= htmlspecialchars($c['cidade'] . ' - ' . $c['estado']) ?>
                         </p>
                         
-                        <div class="card-actions">
-                            <a href="visualizar.php?id=<?= $c['id'] ?>" class="btn-small btn-ver">Ver</a>
-                            <a href="editar.php?id=<?= $c['id'] ?>" class="btn-small btn-editar">Editar</a>
-                            <a href="excluir.php?id=<?= $c['id'] ?>" class="btn-small btn-excluir" onclick="return confirm('Tem certeza que deseja excluir este currículo? Esta ação não pode ser desfeita e todas as informações relacionadas serão apagadas (ON DELETE CASCADE).');">Excluir</a>
-                        </div>
-                    </div>
+                        <nav class="cartao-acoes" aria-label="Ações para <?= htmlspecialchars($c['nome']) ?>">
+                            <a href="visualizar.php?id=<?= $c['id'] ?>" class="botao-pequeno botao-ver">Ver</a>
+                            <a href="editar.php?id=<?= $c['id'] ?>" class="botao-pequeno botao-editar">Editar</a>
+                            <a href="excluir.php?id=<?= $c['id'] ?>" class="botao-pequeno botao-excluir" onclick="return confirm('Tem certeza que deseja excluir este currículo? Esta ação não pode ser desfeita e todas as informações relacionadas serão apagadas (ON DELETE CASCADE).');">Excluir</a>
+                        </nav>
+                    </article>
                 <?php endforeach; ?>
-            </div>
+            </section>
         <?php endif; ?>
 
     </section>
 </main>
 
 <?php 
-// Verifica se o arquivo existe antes de incluir
 if(file_exists("partials/footer.php")){
     require_once("partials/footer.php"); 
 }

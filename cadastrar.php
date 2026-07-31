@@ -1,28 +1,6 @@
 <?php
 require_once("config/crud.php");
 require_once("config/conexao.php");
-// $id = create($pdo, "dados_pessoais", [
-
-//     "nome" => $_POST["nome"],
-//     "cargo" => $_POST["cargo"],
-//     "resumo" => $_POST["resumo"],
-//     "objetivo" => $_POST["objetivo"],
-//     "cidade" => $_POST["cidade"],
-//     "estado" => $_POST["estado"]
-
-// ]);
-
-// create($pdo, "contatos", [
-
-//     "dados_pessoais_id" => $id,
-//     "email" => $_POST["email"],
-//     "telefone" => $_POST["telefone"],
-//     "linkedin" => $_POST["linkedin"],
-//     "github" => $_POST["github"],
-//     "site_pessoal" => $_POST["site"]
-
-// ]);
-
 ?>
 
 <!DOCTYPE html>
@@ -48,46 +26,44 @@ require_once("config/conexao.php");
 
         <form action="salvar.php" method="POST">
 
-
             <fieldset>
-
                 <legend>Dados Pessoais</legend>
 
                 <div class="grade-formulario">
 
                     <div class="campo-formulario">
-                        <label>Nome</label>
-                        <input type="text" name="nome" required>
+                        <label for="nome">Nome</label>
+                        <input id="nome" type="text" name="nome" required>
                     </div>
 
                     <div class="campo-formulario">
-                        <label>Cargo</label>
-                        <input type="text" name="cargo" required>
+                        <label for="cargo">Cargo</label>
+                        <input id="cargo" type="text" name="cargo" required>
                     </div>
 
                     <div class="campo-formulario largura-total">
-                        <label>Resumo Profissional</label>
-                        <textarea name="resumo" rows="5"></textarea>
+                        <label for="resumo">Resumo Profissional</label>
+                        <textarea id="resumo" name="resumo" rows="5"></textarea>
                     </div>
 
                     <div class="campo-formulario largura-total">
-                        <label>Objetivo Profissional</label>
-                        <textarea name="objetivo" rows="4"></textarea>
+                        <label for="objetivo">Objetivo Profissional</label>
+                        <textarea id="objetivo" name="objetivo" rows="4"></textarea>
                     </div>
 
                     <div class="campo-formulario">
-                        <label>Data de nascimento</label>
-                        <input type="date" name="nascimento">
+                        <label for="nascimento">Data de nascimento</label>
+                        <input id="nascimento" type="date" name="nascimento">
                     </div>
 
                     <div class="campo-formulario">
-                        <label>Cidade</label>
-                        <input type="text" name="cidade">
+                        <label for="cidade">Cidade</label>
+                        <input id="cidade" type="text" name="cidade">
                     </div>
 
                     <div class="campo-formulario">
-                        <label>Estado</label>
-                        <input type="text" name="estado">
+                        <label for="estado">Estado</label>
+                        <input id="estado" type="text" name="estado">
                     </div>
 
                 </div>
@@ -95,34 +71,33 @@ require_once("config/conexao.php");
             </fieldset>
 
             <fieldset>
-
                 <legend>Contato</legend>
 
                 <div class="grade-formulario">
 
                     <div class="campo-formulario">
-                        <label>E-mail</label>
-                        <input type="email" name="email">
+                        <label for="email">E-mail</label>
+                        <input id="email" type="email" name="email">
                     </div>
 
                     <div class="campo-formulario">
-                        <label>Telefone</label>
-                        <input type="text" name="telefone">
+                        <label for="telefone">Telefone</label>
+                        <input id="telefone" type="tel" name="telefone">
                     </div>
 
                     <div class="campo-formulario">
-                        <label>LinkedIn</label>
-                        <input type="url" name="linkedin">
+                        <label for="linkedin">LinkedIn</label>
+                        <input id="linkedin" type="url" name="linkedin">
                     </div>
 
                     <div class="campo-formulario">
-                        <label>GitHub</label>
-                        <input type="url" name="github">
+                        <label for="github">GitHub</label>
+                        <input id="github" type="url" name="github">
                     </div>
 
                     <div class="campo-formulario largura-total">
-                        <label>Site Pessoal</label>
-                        <input type="url" name="site_pessoal">
+                        <label for="site_pessoal">Site Pessoal</label>
+                        <input id="site_pessoal" type="url" name="site_pessoal">
                     </div>
 
                 </div>
@@ -133,28 +108,28 @@ require_once("config/conexao.php");
                 <legend>Experiência Profissional</legend>
                 <div class="grade-formulario">
                     <div class="campo-formulario">
-                        <label>Empresa</label>
-                        <input type="text" name="empresa">
+                        <label for="empresa">Empresa</label>
+                        <input id="empresa" type="text" name="empresa">
                     </div>
                     <div class="campo-formulario">
-                        <label>Função</label>
-                        <input type="text" name="funcao">
+                        <label for="funcao">Função</label>
+                        <input id="funcao" type="text" name="funcao">
                     </div>
                     <div class="campo-formulario">
-                        <label>Período de Início</label>
-                        <input type="date" name="exp_inicio">
+                        <label for="exp_inicio">Período de Início</label>
+                        <input id="exp_inicio" type="date" name="exp_inicio">
                     </div>
                     <div class="campo-formulario">
-                        <label>Período de Fim</label>
-                        <input type="date" name="exp_fim">
+                        <label for="exp_fim">Período de Fim</label>
+                        <input id="exp_fim" type="date" name="exp_fim">
                     </div>
                     <div class="campo-formulario largura-total" style="flex-direction: row; align-items: center; gap: 10px;">
                         <input type="checkbox" name="trabalho_atual" value="1" id="trabalho_atual">
                         <label for="trabalho_atual" style="margin-bottom: 0;">Trabalho Atual</label>
                     </div>
                     <div class="campo-formulario largura-total">
-                        <label>Descrição da Experiência</label>
-                        <textarea name="exp_descricao" rows="4"></textarea>
+                        <label for="exp_descricao">Descrição da Experiência</label>
+                        <textarea id="exp_descricao" name="exp_descricao" rows="4"></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -163,28 +138,28 @@ require_once("config/conexao.php");
                 <legend>Formação Acadêmica</legend>
                 <div class="grade-formulario">
                     <div class="campo-formulario">
-                        <label>Instituição</label>
-                        <input type="text" name="instituicao">
+                        <label for="instituicao">Instituição</label>
+                        <input id="instituicao" type="text" name="instituicao">
                     </div>
                     <div class="campo-formulario">
-                        <label>Curso</label>
-                        <input type="text" name="curso">
+                        <label for="curso">Curso</label>
+                        <input id="curso" type="text" name="curso">
                     </div>
                     <div class="campo-formulario">
-                        <label>Período de Início</label>
-                        <input type="date" name="formacao_inicio">
+                        <label for="formacao_inicio">Período de Início</label>
+                        <input id="formacao_inicio" type="date" name="formacao_inicio">
                     </div>
                     <div class="campo-formulario">
-                        <label>Período de Fim</label>
-                        <input type="date" name="formacao_fim">
+                        <label for="formacao_fim">Período de Fim</label>
+                        <input id="formacao_fim" type="date" name="formacao_fim">
                     </div>
                     <div class="campo-formulario largura-total" style="flex-direction: row; align-items: center; gap: 10px;">
                         <input type="checkbox" name="cursando" value="1" id="cursando">
                         <label for="cursando" style="margin-bottom: 0;">Cursando atualmente</label>
                     </div>
                     <div class="campo-formulario largura-total">
-                        <label>Descrição</label>
-                        <textarea name="formacao_descricao" rows="4"></textarea>
+                        <label for="formacao_descricao">Descrição</label>
+                        <textarea id="formacao_descricao" name="formacao_descricao" rows="4"></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -193,12 +168,12 @@ require_once("config/conexao.php");
                 <legend>Habilidades</legend>
                 <div class="grade-formulario">
                     <div class="campo-formulario">
-                        <label>Habilidade</label>
-                        <input type="text" name="habilidade">
+                        <label for="habilidade">Habilidade</label>
+                        <input id="habilidade" type="text" name="habilidade">
                     </div>
                     <div class="campo-formulario">
-                        <label>Nível</label>
-                        <select name="habilidade_nivel">
+                        <label for="habilidade_nivel">Nível</label>
+                        <select id="habilidade_nivel" name="habilidade_nivel">
                             <option value="Básico">Básico</option>
                             <option value="Intermediário" selected>Intermediário</option>
                             <option value="Avançado">Avançado</option>
@@ -211,12 +186,12 @@ require_once("config/conexao.php");
                 <legend>Idiomas</legend>
                 <div class="grade-formulario">
                     <div class="campo-formulario">
-                        <label>Idioma</label>
-                        <input type="text" name="idioma">
+                        <label for="idioma">Idioma</label>
+                        <input id="idioma" type="text" name="idioma">
                     </div>
                     <div class="campo-formulario">
-                        <label>Nível</label>
-                        <select name="idioma_nivel">
+                        <label for="idioma_nivel">Nível</label>
+                        <select id="idioma_nivel" name="idioma_nivel">
                             <option value="Básico" selected>Básico</option>
                             <option value="Intermediário">Intermediário</option>
                             <option value="Avançado">Avançado</option>
@@ -231,20 +206,20 @@ require_once("config/conexao.php");
                 <legend>Certificados</legend>
                 <div class="grade-formulario">
                     <div class="campo-formulario">
-                        <label>Nome do Certificado</label>
-                        <input type="text" name="certificado_nome">
+                        <label for="certificado_nome">Nome do Certificado</label>
+                        <input id="certificado_nome" type="text" name="certificado_nome">
                     </div>
                     <div class="campo-formulario">
-                        <label>Instituição</label>
-                        <input type="text" name="certificado_instituicao">
+                        <label for="certificado_instituicao">Instituição</label>
+                        <input id="certificado_instituicao" type="text" name="certificado_instituicao">
                     </div>
                     <div class="campo-formulario">
-                        <label>Data de Conclusão</label>
-                        <input type="date" name="certificado_data">
+                        <label for="certificado_data">Data de Conclusão</label>
+                        <input id="certificado_data" type="date" name="certificado_data">
                     </div>
                     <div class="campo-formulario">
-                        <label>URL do Certificado</label>
-                        <input type="url" name="certificado_url">
+                        <label for="certificado_url">URL do Certificado</label>
+                        <input id="certificado_url" type="url" name="certificado_url">
                     </div>
                 </div>
             </fieldset>
@@ -253,20 +228,20 @@ require_once("config/conexao.php");
                 <legend>Projetos</legend>
                 <div class="grade-formulario">
                     <div class="campo-formulario">
-                        <label>Nome do Projeto</label>
-                        <input type="text" name="projeto_nome">
+                        <label for="projeto_nome">Nome do Projeto</label>
+                        <input id="projeto_nome" type="text" name="projeto_nome">
                     </div>
                     <div class="campo-formulario">
-                        <label>Tecnologias (ex: PHP, MySQL)</label>
-                        <input type="text" name="projeto_tecnologias">
+                        <label for="projeto_tecnologias">Tecnologias (ex.: PHP, MySQL)</label>
+                        <input id="projeto_tecnologias" type="text" name="projeto_tecnologias">
                     </div>
                     <div class="campo-formulario">
-                        <label>Link do Projeto</label>
-                        <input type="url" name="projeto_link">
+                        <label for="projeto_link">Link do Projeto</label>
+                        <input id="projeto_link" type="url" name="projeto_link">
                     </div>
                     <div class="campo-formulario largura-total">
-                        <label>Descrição</label>
-                        <textarea name="projeto_descricao" rows="4"></textarea>
+                        <label for="projeto_descricao">Descrição</label>
+                        <textarea id="projeto_descricao" name="projeto_descricao" rows="4"></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -288,4 +263,3 @@ require_once("partials/footer.php");
 </body>
 
 </html>
-
