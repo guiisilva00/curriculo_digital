@@ -129,6 +129,148 @@ require_once("config/conexao.php");
 
             </fieldset>
 
+            <fieldset>
+                <legend>Experiência Profissional</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Empresa</label>
+                        <input type="text" name="empresa">
+                    </div>
+                    <div class="campo">
+                        <label>Função</label>
+                        <input type="text" name="funcao">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Início</label>
+                        <input type="date" name="exp_inicio">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Fim</label>
+                        <input type="date" name="exp_fim">
+                    </div>
+                    <div class="campo full" style="flex-direction: row; align-items: center; gap: 10px;">
+                        <input type="checkbox" name="trabalho_atual" value="1" id="trabalho_atual">
+                        <label for="trabalho_atual" style="margin-bottom: 0;">Trabalho Atual</label>
+                    </div>
+                    <div class="campo full">
+                        <label>Descrição da Experiência</label>
+                        <textarea name="exp_descricao" rows="4"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Formação Acadêmica</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Instituição</label>
+                        <input type="text" name="instituicao">
+                    </div>
+                    <div class="campo">
+                        <label>Curso</label>
+                        <input type="text" name="curso">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Início</label>
+                        <input type="date" name="formacao_inicio">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Fim</label>
+                        <input type="date" name="formacao_fim">
+                    </div>
+                    <div class="campo full" style="flex-direction: row; align-items: center; gap: 10px;">
+                        <input type="checkbox" name="cursando" value="1" id="cursando">
+                        <label for="cursando" style="margin-bottom: 0;">Cursando atualmente</label>
+                    </div>
+                    <div class="campo full">
+                        <label>Descrição</label>
+                        <textarea name="formacao_descricao" rows="4"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Habilidades</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Habilidade</label>
+                        <input type="text" name="habilidade">
+                    </div>
+                    <div class="campo">
+                        <label>Nível</label>
+                        <select name="habilidade_nivel">
+                            <option value="Básico">Básico</option>
+                            <option value="Intermediário" selected>Intermediário</option>
+                            <option value="Avançado">Avançado</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Idiomas</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Idioma</label>
+                        <input type="text" name="idioma">
+                    </div>
+                    <div class="campo">
+                        <label>Nível</label>
+                        <select name="idioma_nivel">
+                            <option value="Básico" selected>Básico</option>
+                            <option value="Intermediário">Intermediário</option>
+                            <option value="Avançado">Avançado</option>
+                            <option value="Fluente">Fluente</option>
+                            <option value="Nativo">Nativo</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Certificados</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Nome do Certificado</label>
+                        <input type="text" name="certificado_nome">
+                    </div>
+                    <div class="campo">
+                        <label>Instituição</label>
+                        <input type="text" name="certificado_instituicao">
+                    </div>
+                    <div class="campo">
+                        <label>Data de Conclusão</label>
+                        <input type="date" name="certificado_data">
+                    </div>
+                    <div class="campo">
+                        <label>URL do Certificado</label>
+                        <input type="url" name="certificado_url">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Projetos</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Nome do Projeto</label>
+                        <input type="text" name="projeto_nome">
+                    </div>
+                    <div class="campo">
+                        <label>Tecnologias (ex: PHP, MySQL)</label>
+                        <input type="text" name="projeto_tecnologias">
+                    </div>
+                    <div class="campo">
+                        <label>Link do Projeto</label>
+                        <input type="url" name="projeto_link">
+                    </div>
+                    <div class="campo full">
+                        <label>Descrição</label>
+                        <textarea name="projeto_descricao" rows="4"></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
             <button type="submit" class="btn">
 
                 Salvar Currículo
