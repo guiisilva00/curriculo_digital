@@ -33,11 +33,11 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
 <body>
 <main>
 
-    <section class="conteiner-app conteiner-formulario">
+    <section class="container formulario">
 
-        <h1 class="titulo-pagina">Editar Currículo</h1>
+        <h1 class="title">Editar Currículo</h1>
 
-        <p class="descricao-pagina">
+        <p class="text">
             Atualize as informações do seu currículo digital.
         </p>
 
@@ -45,78 +45,229 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
             <input type="hidden" name="id" value="<?= $id ?>">
 
             <fieldset>
-                <legend>Dados Pessoais</legend>
-                <div class="grade-formulario">
-                    <div class="campo-formulario">
-                        <label for="nome">Nome</label>
-                        <input id="nome" type="text" name="nome" value="<?= htmlspecialchars($curriculo['nome'] ?? '') ?>" required>
-                    </div>
-                    <div class="campo-formulario">
-                        <label for="cargo">Cargo</label>
-                        <input id="cargo" type="text" name="cargo" value="<?= htmlspecialchars($curriculo['cargo'] ?? '') ?>" required>
-                    </div>
-                    <div class="campo-formulario largura-total">
-                        <label for="foto_perfil">Foto de Perfil</label>
-                        <?php if (!empty($curriculo['foto_perfil']) && file_exists($curriculo['foto_perfil'])): ?>
-                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                                <img src="<?= htmlspecialchars($curriculo['foto_perfil']) ?>" alt="Foto atual" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--fern);">
-                                <span style="font-size: 0.85rem; color: var(--hunter-green);">Foto atual carregada. Selecione um novo arquivo apenas se desejar alterá-la.</span>
+                <legend>Foto de Perfil</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Alterar foto</label>
+                        <?php if (!empty($curriculo['foto_perfil'])): ?>
+                            <div style="margin-bottom: 1rem;">
+                                <img src="<?= htmlspecialchars($curriculo['foto_perfil']) ?>" alt="Foto de perfil" style="max-width: 150px; height: 150px; border-radius: 8px; object-fit: cover; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+                                <small style="display: block; margin-top: 0.5rem; color: #64748b;">Foto atual</small>
                             </div>
                         <?php endif; ?>
-                        <input id="foto_perfil" type="file" name="foto_perfil" accept="image/*">
+                        <input type="file" name="foto_perfil" accept="image/jpeg, image/png, image/webp" class="campo-arquivo">
+                        <small class="texto-auxiliar">Formatos aceitos: JPG, PNG, WebP (Máx. 2MB)</small>
                     </div>
-                    <div class="campo-formulario largura-total">
-                        <label for="resumo">Resumo Profissional</label>
-                        <textarea id="resumo" name="resumo" rows="5"><?= htmlspecialchars($curriculo['resumo'] ?? '') ?></textarea>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Dados Pessoais</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Nome</label>
+                        <input type="text" name="nome" placeholder="João Silva" value="<?= htmlspecialchars($curriculo['nome'] ?? '') ?>" required>
                     </div>
-                    <div class="campo-formulario largura-total">
-                        <label for="objetivo">Objetivo Profissional</label>
-                        <textarea id="objetivo" name="objetivo" rows="4"><?= htmlspecialchars($curriculo['objetivo'] ?? '') ?></textarea>
+                    <div class="campo">
+                        <label>Cargo</label>
+                        <input type="text" name="cargo" placeholder="Desenvolvedor Web" value="<?= htmlspecialchars($curriculo['cargo'] ?? '') ?>" required>
                     </div>
-                    <div class="campo-formulario">
-                        <label for="nascimento">Data de nascimento</label>
-                        <input id="nascimento" type="date" name="nascimento" value="<?= htmlspecialchars($curriculo['nascimento'] ?? '') ?>">
+                    <div class="campo full">
+                        <label>Resumo Profissional</label>
+                        <textarea name="resumo" rows="5" placeholder="Resuma suas principais qualidades, experiências e competências..."><?= htmlspecialchars($curriculo['resumo'] ?? '') ?></textarea>
                     </div>
-                    <div class="campo-formulario">
-                        <label for="cidade">Cidade</label>
-                        <input id="cidade" type="text" name="cidade" value="<?= htmlspecialchars($curriculo['cidade'] ?? '') ?>">
+                    <div class="campo full">
+                        <label>Objetivo Profissional</label>
+                        <textarea name="objetivo" rows="4" placeholder="Descreva seus objetivos profissionais e a carreira que deseja..."><?= htmlspecialchars($curriculo['objetivo'] ?? '') ?></textarea>
                     </div>
-                    <div class="campo-formulario">
-                        <label for="estado">Estado</label>
-                        <input id="estado" type="text" name="estado" value="<?= htmlspecialchars($curriculo['estado'] ?? '') ?>">
+                    <div class="campo">
+                        <label>Data de nascimento</label>
+                        <input type="date" name="nascimento" value="<?= htmlspecialchars($curriculo['nascimento'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Cidade</label>
+                        <input type="text" name="cidade" placeholder="São Paulo" value="<?= htmlspecialchars($curriculo['cidade'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Estado</label>
+                        <input type="text" name="estado" placeholder="SP" value="<?= htmlspecialchars($curriculo['estado'] ?? '') ?>">
                     </div>
                 </div>
             </fieldset>
 
             <fieldset>
                 <legend>Contato</legend>
-                <div class="grade-formulario">
-                    <div class="campo-formulario">
-                        <label for="email">E-mail</label>
-                        <input id="email" type="email" name="email" value="<?= htmlspecialchars($contato['email'] ?? '') ?>">
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>E-mail</label>
+                        <input type="email" name="email" placeholder="seu.email@exemplo.com" value="<?= htmlspecialchars($contato['email'] ?? '') ?>">
                     </div>
-                    <div class="campo-formulario">
-                        <label for="telefone">Telefone</label>
-                        <input id="telefone" type="tel" name="telefone" value="<?= htmlspecialchars($contato['telefone'] ?? '') ?>">
+                    <div class="campo">
+                        <label>Telefone</label>
+                        <input type="text" name="telefone" placeholder="(11) 99999-9999" value="<?= htmlspecialchars($contato['telefone'] ?? '') ?>">
                     </div>
-                    <div class="campo-formulario">
-                        <label for="linkedin">LinkedIn</label>
-                        <input id="linkedin" type="url" name="linkedin" value="<?= htmlspecialchars($contato['linkedin'] ?? '') ?>">
+                    <div class="campo">
+                        <label>LinkedIn</label>
+                        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/seu-perfil" value="<?= htmlspecialchars($contato['linkedin'] ?? '') ?>">
                     </div>
-                    <div class="campo-formulario">
-                        <label for="github">GitHub</label>
-                        <input id="github" type="url" name="github" value="<?= htmlspecialchars($contato['github'] ?? '') ?>">
+                    <div class="campo">
+                        <label>GitHub</label>
+                        <input type="url" name="github" placeholder="https://github.com/seu-usuario" value="<?= htmlspecialchars($contato['github'] ?? '') ?>">
                     </div>
-                    <div class="campo-formulario largura-total">
-                        <label for="site_pessoal">Site Pessoal</label>
-                        <input id="site_pessoal" type="url" name="site_pessoal" value="<?= htmlspecialchars($contato['site_pessoal'] ?? '') ?>">
+                    <div class="campo full">
+                        <label>Site Pessoal</label>
+                        <input type="url" name="site_pessoal" placeholder="https://seu-site.com" value="<?= htmlspecialchars($contato['site_pessoal'] ?? '') ?>">
                     </div>
                 </div>
             </fieldset>
 
-            <div class="grupo-botoes" style="justify-content: flex-start; margin-top: 20px;">
-                <button type="submit" class="botao">Salvar Alterações</button>
-                <a href="painel.php?id=<?= $id ?>" class="botao botao-secundario">Cancelar / Voltar</a>
+            <fieldset>
+                <legend>Experiência Profissional</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Empresa</label>
+                        <input type="text" name="empresa" placeholder="Nome da empresa" value="<?= htmlspecialchars($exp['empresa'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Função</label>
+                        <input type="text" name="funcao" placeholder="Desenvolvedor Frontend" value="<?= htmlspecialchars($exp['funcao'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Início</label>
+                        <input type="date" name="exp_inicio" value="<?= htmlspecialchars($exp['periodo_inicio'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Fim</label>
+                        <input type="date" name="exp_fim" value="<?= htmlspecialchars($exp['periodo_fim'] ?? '') ?>">
+                    </div>
+                    <div class="campo full" style="flex-direction: row; align-items: center; gap: 10px;">
+                        <input type="checkbox" name="trabalho_atual" value="1" id="trabalho_atual" <?= !empty($exp['trabalho_atual']) ? 'checked' : '' ?>>
+                        <label for="trabalho_atual" style="margin-bottom: 0;">Trabalho Atual</label>
+                    </div>
+                    <div class="campo full">
+                        <label>Descrição da Experiência</label>
+                        <textarea name="exp_descricao" rows="4" placeholder="Descreva suas responsabilidades e conquistas..."><?= htmlspecialchars($exp['descricao'] ?? '') ?></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Formação Acadêmica</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Instituição</label>
+                        <input type="text" name="instituicao" placeholder="Universidade ou Instituto" value="<?= htmlspecialchars($form['instituicao'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Curso</label>
+                        <input type="text" name="curso" placeholder="Engenharia da Computação" value="<?= htmlspecialchars($form['curso'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Início</label>
+                        <input type="date" name="formacao_inicio" value="<?= htmlspecialchars($form['periodo_inicio'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Período de Fim</label>
+                        <input type="date" name="formacao_fim" value="<?= htmlspecialchars($form['periodo_fim'] ?? '') ?>">
+                    </div>
+                    <div class="campo full" style="flex-direction: row; align-items: center; gap: 10px;">
+                        <input type="checkbox" name="cursando" value="1" id="cursando" <?= !empty($form['cursando']) ? 'checked' : '' ?>>
+                        <label for="cursando" style="margin-bottom: 0;">Cursando atualmente</label>
+                    </div>
+                    <div class="campo full">
+                        <label>Descrição</label>
+                        <textarea name="formacao_descricao" rows="4" placeholder="Informações adicionais sobre o curso..."><?= htmlspecialchars($form['descricao'] ?? '') ?></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Habilidades</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Habilidade</label>
+                        <input type="text" name="habilidade" placeholder="ex: JavaScript, Python, PHP" value="<?= htmlspecialchars($hab['habilidade'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Nível</label>
+                        <?php $nivel_hab = $hab['nivel'] ?? 'Intermediário'; ?>
+                        <select name="habilidade_nivel">
+                            <option value="Básico" <?= $nivel_hab == 'Básico' ? 'selected' : '' ?>>Básico</option>
+                            <option value="Intermediário" <?= $nivel_hab == 'Intermediário' ? 'selected' : '' ?>>Intermediário</option>
+                            <option value="Avançado" <?= $nivel_hab == 'Avançado' ? 'selected' : '' ?>>Avançado</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Idiomas</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Idioma</label>
+                        <input type="text" name="idioma" placeholder="ex: Inglês, Espanhol" value="<?= htmlspecialchars($idio['idioma'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Nível</label>
+                        <?php $nivel_idio = $idio['nivel'] ?? 'Básico'; ?>
+                        <select name="idioma_nivel">
+                            <option value="Básico" <?= $nivel_idio == 'Básico' ? 'selected' : '' ?>>Básico</option>
+                            <option value="Intermediário" <?= $nivel_idio == 'Intermediário' ? 'selected' : '' ?>>Intermediário</option>
+                            <option value="Avançado" <?= $nivel_idio == 'Avançado' ? 'selected' : '' ?>>Avançado</option>
+                            <option value="Fluente" <?= $nivel_idio == 'Fluente' ? 'selected' : '' ?>>Fluente</option>
+                            <option value="Nativo" <?= $nivel_idio == 'Nativo' ? 'selected' : '' ?>>Nativo</option>
+                        </select>
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Certificados</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Nome do Certificado</label>
+                        <input type="text" name="certificado_nome" placeholder="ex: AWS Certified Solutions Architect" value="<?= htmlspecialchars($cert['nome'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Instituição</label>
+                        <input type="text" name="certificado_instituicao" placeholder="ex: Amazon Web Services" value="<?= htmlspecialchars($cert['instituicao'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Data de Conclusão</label>
+                        <input type="date" name="certificado_data" value="<?= htmlspecialchars($cert['data_conclusao'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>URL do Certificado</label>
+                        <input type="url" name="certificado_url" placeholder="https://certificado.com/seu-certificado" value="<?= htmlspecialchars($cert['url_certificado'] ?? '') ?>">
+                    </div>
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Projetos</legend>
+                <div class="form-grid">
+                    <div class="campo">
+                        <label>Nome do Projeto</label>
+                        <input type="text" name="projeto_nome" placeholder="ex: E-commerce Platform" value="<?= htmlspecialchars($proj['nome'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Tecnologias (ex: PHP, MySQL)</label>
+                        <input type="text" name="projeto_tecnologias" placeholder="ex: React, Node.js, MongoDB" value="<?= htmlspecialchars($proj['tecnologias'] ?? '') ?>">
+                    </div>
+                    <div class="campo">
+                        <label>Link do Projeto</label>
+                        <input type="url" name="projeto_link" placeholder="https://github.com/seu-usuario/projeto" value="<?= htmlspecialchars($proj['link'] ?? '') ?>">
+                    </div>
+                    <div class="campo full">
+                        <label>Descrição</label>
+                        <textarea name="projeto_descricao" rows="4" placeholder="Descreva o projeto, sua função e contribuições..."><?= htmlspecialchars($proj['descricao'] ?? '') ?></textarea>
+                    </div>
+                </div>
+            </fieldset>
+
+            <div class="botoes" style="justify-content: flex-start; margin-top: 20px;">
+                <button type="submit" class="btn">Atualizar Currículo</button>
+                <a href="listar_curriculos.php" class="btn secundario" style="padding: 15px 30px; border-radius: 8px; text-decoration: none; color: white;">Cancelar / Voltar</a>
             </div>
 
         </form>

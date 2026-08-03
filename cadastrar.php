@@ -45,22 +45,22 @@ require_once("config/conexao.php");
 
                     <div class="campo-formulario">
                         <label>Nome</label>
-                        <input type="text" name="nome" required>
+                        <input type="text" name="nome" placeholder="João Silva" required>
                     </div>
 
                     <div class="campo-formulario">
                         <label>Cargo</label>
-                        <input type="text" name="cargo" required>
+                        <input type="text" name="cargo" placeholder="Desenvolvedor Web" required>
                     </div>
 
                     <div class="campo-formulario largura-total">
                         <label>Resumo Profissional</label>
-                        <textarea name="resumo" rows="5"></textarea>
+                        <textarea name="resumo" rows="5" placeholder="Resuma suas principais qualidades, experiências e competências..."></textarea>
                     </div>
 
                     <div class="campo-formulario largura-total">
                         <label>Objetivo Profissional</label>
-                        <textarea name="objetivo" rows="4"></textarea>
+                        <textarea name="objetivo" rows="4" placeholder="Descreva seus objetivos profissionais e a carreira que deseja..."></textarea>
                     </div>
 
                     <div class="campo-formulario">
@@ -70,12 +70,12 @@ require_once("config/conexao.php");
 
                     <div class="campo-formulario">
                         <label>Cidade</label>
-                        <input type="text" name="cidade">
+                        <input type="text" name="cidade" placeholder="São Paulo">
                     </div>
 
                     <div class="campo-formulario">
                         <label>Estado</label>
-                        <input type="text" name="estado">
+                        <input type="text" name="estado" placeholder="SP">
                     </div>
 
                 </div>
@@ -90,27 +90,27 @@ require_once("config/conexao.php");
 
                     <div class="campo-formulario">
                         <label>E-mail</label>
-                        <input type="email" name="email">
+                        <input type="email" name="email" placeholder="seu.email@exemplo.com">
                     </div>
 
                     <div class="campo-formulario">
                         <label>Telefone</label>
-                        <input type="text" name="telefone">
+                        <input type="text" name="telefone" placeholder="(11) 99999-9999">
                     </div>
 
                     <div class="campo-formulario">
                         <label>LinkedIn</label>
-                        <input type="url" name="linkedin">
+                        <input type="url" name="linkedin" placeholder="https://linkedin.com/in/seu-perfil">
                     </div>
 
                     <div class="campo-formulario">
                         <label>GitHub</label>
-                        <input type="url" name="github">
+                        <input type="url" name="github" placeholder="https://github.com/seu-usuario">
                     </div>
 
                     <div class="campo-formulario largura-total">
                         <label>Site Pessoal</label>
-                        <input type="url" name="site_pessoal">
+                        <input type="url" name="site_pessoal" placeholder="https://seu-site.com">
                     </div>
 
                 </div>
@@ -122,11 +122,11 @@ require_once("config/conexao.php");
                 <div class="grade-formulario">
                     <div class="campo-formulario">
                         <label>Empresa</label>
-                        <input type="text" name="empresa">
+                        <input type="text" name="empresa" placeholder="Nome da empresa">
                     </div>
                     <div class="campo-formulario">
                         <label>Função</label>
-                        <input type="text" name="funcao">
+                        <input type="text" name="funcao" placeholder="Desenvolvedor Frontend">
                     </div>
                     <div class="campo-formulario">
                         <label>Período de Início</label>
@@ -142,7 +142,7 @@ require_once("config/conexao.php");
                     </div>
                     <div class="campo-formulario largura-total">
                         <label>Descrição da Experiência</label>
-                        <textarea name="exp_descricao" rows="4"></textarea>
+                        <textarea name="exp_descricao" rows="4" placeholder="Descreva suas responsabilidades e conquistas..."></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -152,11 +152,11 @@ require_once("config/conexao.php");
                 <div class="grade-formulario">
                     <div class="campo-formulario">
                         <label>Instituição</label>
-                        <input type="text" name="instituicao">
+                        <input type="text" name="instituicao" placeholder="Universidade ou Instituto">
                     </div>
                     <div class="campo-formulario">
                         <label>Curso</label>
-                        <input type="text" name="curso">
+                        <input type="text" name="curso" placeholder="Engenharia da Computação">
                     </div>
                     <div class="campo-formulario">
                         <label>Período de Início</label>
@@ -172,7 +172,7 @@ require_once("config/conexao.php");
                     </div>
                     <div class="campo-formulario largura-total">
                         <label>Descrição</label>
-                        <textarea name="formacao_descricao" rows="4"></textarea>
+                        <textarea name="formacao_descricao" rows="4" placeholder="Informações adicionais sobre o curso..."></textarea>
                     </div>
                 </div>
             </fieldset>
@@ -182,7 +182,7 @@ require_once("config/conexao.php");
                 <div class="grade-formulario">
                     <div class="campo-formulario">
                         <label>Habilidade</label>
-                        <input type="text" name="habilidade">
+                        <input type="text" name="habilidade" placeholder="ex: JavaScript, Python, PHP">
                     </div>
                     <div class="campo-formulario">
                         <label>Nível</label>
@@ -200,7 +200,7 @@ require_once("config/conexao.php");
                 <div class="grade-formulario">
                     <div class="campo-formulario">
                         <label>Idioma</label>
-                        <input type="text" name="idioma">
+                        <input type="text" name="idioma" placeholder="ex: Inglês, Espanhol">
                     </div>
                     <div class="campo-formulario">
                         <label>Nível</label>
@@ -220,11 +220,11 @@ require_once("config/conexao.php");
                 <div class="grade-formulario">
                     <div class="campo-formulario">
                         <label>Nome do Certificado</label>
-                        <input type="text" name="certificado_nome">
+                        <input type="text" name="certificado_nome" placeholder="ex: AWS Certified Solutions Architect">
                     </div>
                     <div class="campo-formulario">
                         <label>Instituição</label>
-                        <input type="text" name="certificado_instituicao">
+                        <input type="text" name="certificado_instituicao" placeholder="ex: Amazon Web Services">
                     </div>
                     <div class="campo-formulario">
                         <label>Data de Conclusão</label>
@@ -232,7 +232,7 @@ require_once("config/conexao.php");
                     </div>
                     <div class="campo-formulario">
                         <label>URL do Certificado</label>
-                        <input type="url" name="certificado_url">
+                        <input type="url" name="certificado_url" placeholder="https://certificado.com/seu-certificado">
                     </div>
                 </div>
             </fieldset>
@@ -242,19 +242,19 @@ require_once("config/conexao.php");
                 <div class="grade-formulario">
                     <div class="campo-formulario">
                         <label>Nome do Projeto</label>
-                        <input type="text" name="projeto_nome">
+                        <input type="text" name="projeto_nome" placeholder="ex: E-commerce Platform">
                     </div>
                     <div class="campo-formulario">
                         <label>Tecnologias (ex: PHP, MySQL)</label>
-                        <input type="text" name="projeto_tecnologias">
+                        <input type="text" name="projeto_tecnologias" placeholder="ex: React, Node.js, MongoDB">
                     </div>
                     <div class="campo-formulario">
                         <label>Link do Projeto</label>
-                        <input type="url" name="projeto_link">
+                        <input type="url" name="projeto_link" placeholder="https://github.com/seu-usuario/projeto">
                     </div>
                     <div class="campo-formulario largura-total">
                         <label>Descrição</label>
-                        <textarea name="projeto_descricao" rows="4"></textarea>
+                        <textarea name="projeto_descricao" rows="4" placeholder="Descreva o projeto, sua função e contribuições..."></textarea>
                     </div>
                 </div>
             </fieldset>
