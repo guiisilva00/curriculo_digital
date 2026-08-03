@@ -24,7 +24,7 @@ require_once("config/conexao.php");
             Preencha os campos abaixo para criar seu currículo digital.
         </p>
 
-        <form action="salvar.php" method="POST">
+        <form action="salvar.php" method="POST" enctype="multipart/form-data">
 
             <fieldset>
                 <legend>Dados Pessoais</legend>
@@ -39,6 +39,11 @@ require_once("config/conexao.php");
                     <div class="campo-formulario">
                         <label for="cargo">Cargo</label>
                         <input id="cargo" type="text" name="cargo" required>
+                    </div>
+
+                    <div class="campo-formulario largura-total">
+                        <label for="foto_perfil">Foto de Perfil</label>
+                        <input id="foto_perfil" type="file" name="foto_perfil" accept="image/*">
                     </div>
 
                     <div class="campo-formulario largura-total">
@@ -248,7 +253,7 @@ require_once("config/conexao.php");
 
             <div class="grupo-botoes" style="justify-content: flex-start; margin-top: 20px;">
                 <button type="submit" class="botao">Salvar Currículo</button>
-                <a href="index.php" class="botao botao-secundario" style="padding: 15px 30px; border-radius: 8px; text-decoration: none; color: white;">Cancelar / Voltar</a>
+                <a href="index.php" class="botao botao-secundario">Cancelar / Voltar</a>
             </div>
 
         </form>

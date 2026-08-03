@@ -41,7 +41,7 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
             Atualize as informações do seu currículo digital.
         </p>
 
-        <form action="atualizar.php" method="POST">
+        <form action="atualizar.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="id" value="<?= $id ?>">
 
             <fieldset>
@@ -54,6 +54,16 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
                     <div class="campo-formulario">
                         <label for="cargo">Cargo</label>
                         <input id="cargo" type="text" name="cargo" value="<?= htmlspecialchars($curriculo['cargo'] ?? '') ?>" required>
+                    </div>
+                    <div class="campo-formulario largura-total">
+                        <label for="foto_perfil">Foto de Perfil</label>
+                        <?php if (!empty($curriculo['foto_perfil']) && file_exists($curriculo['foto_perfil'])): ?>
+                            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                                <img src="<?= htmlspecialchars($curriculo['foto_perfil']) ?>" alt="Foto atual" style="width: 50px; height: 50px; border-radius: 50%; object-fit: cover; border: 2px solid var(--fern);">
+                                <span style="font-size: 0.85rem; color: var(--hunter-green);">Foto atual carregada. Selecione um novo arquivo apenas se desejar alterá-la.</span>
+                            </div>
+                        <?php endif; ?>
+                        <input id="foto_perfil" type="file" name="foto_perfil" accept="image/*">
                     </div>
                     <div class="campo-formulario largura-total">
                         <label for="resumo">Resumo Profissional</label>
@@ -249,8 +259,8 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
             </fieldset>
 
             <div class="grupo-botoes" style="justify-content: flex-start; margin-top: 20px;">
-                <button type="submit" class="botao">Atualizar Currículo</button>
-                <a href="listar_curriculos.php" class="botao botao-secundario" style="padding: 15px 30px; border-radius: 8px; text-decoration: none; color: white;">Cancelar / Voltar</a>
+                <button type="submit" class="botao">Salvar Alterações</button>
+                <a href="listar_curriculos.php" class="botao botao-secundario">Cancelar / Voltar</a>
             </div>
 
         </form>

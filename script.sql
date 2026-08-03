@@ -120,3 +120,35 @@ CREATE TABLE projetos (
         REFERENCES dados_pessoais(id)
         ON DELETE CASCADE
 );
+
+-- ==========================================================
+-- DADOS DE EXEMPLO (EXEMPLO COMPLETO PARA VISUALIZAÇÃO)
+-- ==========================================================
+
+INSERT INTO dados_pessoais (id, nome, cargo, resumo, objetivo, nascimento, cidade, estado) VALUES 
+(1, 'Guilherme Silva', 'Desenvolvedor Full Stack', 'Desenvolvedor apaixonado por criar soluções web modernas, limpas e eficientes. Experiência em desenvolvimento backend com PHP/MySQL e interfaces dinâmicas.', 'Atuar como Desenvolvedor Full Stack contribuindo para projetos desafiadores e de alto impacto.', '1998-05-15', 'São Paulo', 'SP');
+
+INSERT INTO contatos (dados_pessoais_id, email, telefone, linkedin, github, site_pessoal) VALUES 
+(1, 'guilherme@exemplo.com', '(11) 98765-4321', 'https://linkedin.com/in/gui-silva', 'https://github.com/guiisilva00', 'https://meusite.com.br');
+
+INSERT INTO experiencias (dados_pessoais_id, empresa, funcao, periodo_inicio, periodo_fim, trabalho_atual, descricao) VALUES 
+(1, 'Tech Solutions', 'Desenvolvedor Web', '2022-01-10', NULL, TRUE, 'Desenvolvimento de sistemas web e APIs em PHP. Criação de telas e refatoração de código legado para novas arquiteturas.');
+
+INSERT INTO formacao (dados_pessoais_id, instituicao, curso, periodo_inicio, periodo_fim, cursando, descricao) VALUES 
+(1, 'Universidade de Tecnologia', 'Análise e Desenvolvimento de Sistemas', '2020-02-01', '2023-12-15', FALSE, 'Foco em Engenharia de Software, Bancos de Dados Relacionais e Desenvolvimento Web.');
+
+INSERT INTO habilidades (dados_pessoais_id, habilidade, nivel) VALUES 
+(1, 'PHP / MySQL', 'Avançado'),
+(1, 'JavaScript / HTML5 / CSS3', 'Avançado'),
+(1, 'Git / GitHub', 'Intermediário');
+
+INSERT INTO idiomas (dados_pessoais_id, idioma, nivel) VALUES 
+(1, 'Português', 'Nativo'),
+(1, 'Inglês', 'Intermediário');
+
+INSERT INTO certificados (dados_pessoais_id, nome, instituicao, data_conclusao, url_certificado) VALUES 
+(1, 'Desenvolvimento PHP Avançado', 'Alura', '2023-06-20', 'https://alura.com.br/certificado/exemplo');
+
+INSERT INTO projetos (dados_pessoais_id, nome, descricao, tecnologias, link) VALUES 
+(1, 'Currículo Digital PHP', 'Plataforma interativa para criação, gestão e visualização de currículos digitais modernos.', 'PHP, MySQL, HTML5, CSS3, JavaScript', 'https://github.com/guiisilva00/curriculo_digital');
+

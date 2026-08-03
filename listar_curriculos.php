@@ -35,8 +35,19 @@ $curriculos = readAll($pdo, "dados_pessoais");
             <section class="grade-curriculos" aria-label="Currículos cadastrados">
                 <?php foreach ($curriculos as $c): ?>
                     <article class="cartao-curriculo">
-                        <h2 class="cartao-titulo"><?= htmlspecialchars($c['nome']) ?></h2>
-                        <p class="cartao-subtitulo"><?= htmlspecialchars($c['cargo']) ?></p>
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
+                            <?php if (!empty($c['foto_perfil']) && file_exists($c['foto_perfil'])): ?>
+                                <img src="<?= htmlspecialchars($c['foto_perfil']) ?>" alt="Foto" style="width: 44px; height: 44px; border-radius: 50%; object-fit: cover; border: 2px solid var(--fern); flex-shrink: 0;">
+                            <?php else: ?>
+                                <div style="width: 44px; height: 44px; border-radius: 50%; background: rgba(79, 119, 45, 0.15); display: flex; align-items: center; justify-content: center; color: var(--fern); font-weight: 700; flex-shrink: 0;">
+                                    <?= mb_substr($c['nome'], 0, 1) ?>
+                                </div>
+                            <?php endif; ?>
+                            <div style="overflow: hidden;">
+                                <h2 class="cartao-titulo"><?= htmlspecialchars($c['nome']) ?></h2>
+                                <p class="cartao-subtitulo" style="min-height: auto; margin-top: 2px;"><?= htmlspecialchars($c['cargo']) ?></p>
+                            </div>
+                        </div>
                         <p class="cartao-localizacao">
                             <span aria-hidden="true">📍</span>
                             <?= htmlspecialchars($c['cidade'] . ' - ' . $c['estado']) ?>

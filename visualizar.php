@@ -35,15 +35,27 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
     <section class="conteiner-app conteiner-formulario">
         
         <nav class="barra-acoes" aria-label="Ações do currículo">
-            <a href="listar_curriculos.php" class="botao botao-secundario" style="padding: 10px 20px; border-radius: 8px;">&larr; Voltar para Lista</a>
-            <div style="display: flex; gap: 10px;">
-                <a href="editar.php?id=<?= $curriculo['id'] ?>" class="botao" style="background: #f59e0b; box-shadow: none; padding: 10px 20px; border-radius: 8px;">Editar</a>
-                <a href="index.php" class="botao botao-secundario" style="padding: 10px 20px; border-radius: 8px;">Tela Inicial</a>
+            <a href="listar_curriculos.php" class="botao botao-secundario">&larr; Voltar para Lista</a>
+            <div>
+                <a href="editar.php?id=<?= $curriculo['id'] ?>" class="botao botao-alerta">Editar</a>
+                <a href="index.php" class="botao botao-secundario">Tela Inicial</a>
             </div>
         </nav>
 
         <!-- Cabeçalho do CV -->
         <header class="cabecalho-curriculo">
+            <div class="foto-perfil-conteiner">
+                <?php if (!empty($curriculo['foto_perfil']) && file_exists($curriculo['foto_perfil'])): ?>
+                    <img src="<?= htmlspecialchars($curriculo['foto_perfil']) ?>" alt="Foto de <?= htmlspecialchars($curriculo['nome']) ?>" class="foto-perfil-img">
+                <?php else: ?>
+                    <div class="foto-perfil-placeholder">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </div>
+                <?php endif; ?>
+            </div>
             <h1 class="nome-curriculo"><?= htmlspecialchars($curriculo['nome']) ?></h1>
             <p class="cargo-curriculo"><?= htmlspecialchars($curriculo['cargo']) ?></p>
             
@@ -155,11 +167,11 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                         <div class="cabecalho-item">
                             <h3 class="titulo-item"><?= htmlspecialchars($proj['nome']) ?></h3>
                             <?php if(!empty($proj['link'])): ?>
-                                <a href="<?= htmlspecialchars($proj['link']) ?>" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; text-decoration: none; font-size: 0.9rem;">Ver Projeto &nearr;</a>
+                                <a href="<?= htmlspecialchars($proj['link']) ?>" target="_blank" rel="noopener noreferrer" style="color: var(--fern); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ver Projeto &nearr;</a>
                             <?php endif; ?>
                         </div>
                         <?php if(!empty($proj['tecnologias'])): ?>
-                            <div class="subtitulo-item" style="font-size: 0.9rem; color: #64748b;">Tecnologias: <?= htmlspecialchars($proj['tecnologias']) ?></div>
+                            <div class="subtitulo-item" style="font-size: 0.9rem; color: var(--hunter-green);">Tecnologias: <?= htmlspecialchars($proj['tecnologias']) ?></div>
                         <?php endif; ?>
                         <?php if(!empty($proj['descricao'])): ?>
                             <div class="descricao-item"><?= nl2br(htmlspecialchars($proj['descricao'])) ?></div>
@@ -181,7 +193,7 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                         </div>
                         <div class="subtitulo-item"><?= htmlspecialchars($cert['instituicao']) ?></div>
                         <?php if(!empty($cert['url_certificado'])): ?>
-                            <a href="<?= htmlspecialchars($cert['url_certificado']) ?>" target="_blank" rel="noopener noreferrer" style="color: #3b82f6; text-decoration: none; font-size: 0.9rem; display: inline-block; margin-top: 5px;">Ver Certificado &nearr;</a>
+                            <a href="<?= htmlspecialchars($cert['url_certificado']) ?>" target="_blank" rel="noopener noreferrer" style="color: var(--fern); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 5px;">Ver Certificado &nearr;</a>
                         <?php endif; ?>
                     </article>
                 <?php endforeach; ?>
