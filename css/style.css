@@ -731,3 +731,51 @@ footer strong {
         color: #000 !important;
     }
 }
+
+/* ===== ESTILOS PARA UPLOAD COM PALETA VERDE ===== */
+
+/* Estiliza o input file */
+.campo-arquivo {
+    padding: 0.75rem 1rem !important;
+    border: 2px dashed var(--palm-leaf) !important;
+    background: linear-gradient(135deg, #f4f9f0 0%, #ede8d8 100%) !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+.campo-arquivo:hover {
+    border-color: var(--fern) !important;
+    background: linear-gradient(135deg, #e8f4e0 0%, #dfecc8 100%) !important;
+}
+
+.campo-arquivo:focus {
+    border-color: var(--fern) !important;
+    box-shadow: 0 0 0 3px rgba(79, 119, 45, 0.15) !important;
+}
+
+/* Estiliza o botão "Procurar" do file input */
+.campo-arquivo::file-selector-button {
+    background: linear-gradient(135deg, var(--fern) 0%, var(--hunter-green) 100%);
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 1rem;
+}
+
+.campo-arquivo::file-selector-button:hover {
+    background: linear-gradient(135deg, var(--hunter-green) 0%, var(--evergreen) 100%);
+    transform: translateY(-1px);
+}
+
+/* Texto auxiliar (máx. 2MB, formatos, etc) */
+.texto-auxiliar {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--fern);
+    margin-top: 0.5rem;
+    font-weight: 400;
+}
