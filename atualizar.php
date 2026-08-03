@@ -46,10 +46,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["id"])) {
         "site_pessoal" => $_POST["site_pessoal"] ?? ''
     ], "dados_pessoais_id = $id");
 
-    // Para as tabelas filhas opcionais, a estratégia mais segura para um CRUD simples
-    // é limpar os registros antigos deste usuário e inserir os novos, caso tenham sido preenchidos.
-    // Isso evita problemas de dar UPDATE em algo que não existia antes.
-
     // 3. Experiência
     delete($pdo, "experiencias", "dados_pessoais_id = $id");
     if (!empty($_POST["empresa"])) {
@@ -122,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["id"])) {
         ]);
     }
 
-    // Redireciona de volta para a lista com mensagem de sucesso
+    // Redireciona de volta 
     header("Location: listar_curriculos.php?sucesso=atualizado");
     exit;
 }
