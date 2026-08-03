@@ -37,7 +37,8 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
         <nav class="barra-acoes" aria-label="Ações do currículo">
             <a href="listar_curriculos.php" class="botao botao-secundario">&larr; Voltar para Lista</a>
             <div>
-                <a href="editar.php?id=<?= $curriculo['id'] ?>" class="botao botao-alerta">Editar</a>
+                <a href="painel.php?id=<?= $curriculo['id'] ?>" class="botao botao-alerta">Painel</a>
+                <button onclick="window.print()" class="botao">🖨️ Imprimir / PDF</button>
                 <a href="index.php" class="botao botao-secundario">Tela Inicial</a>
             </div>
         </nav>

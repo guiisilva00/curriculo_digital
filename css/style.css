@@ -674,3 +674,60 @@ footer strong {
     .conteiner-listagem { text-align: left; }
     .grade-curriculos { grid-template-columns: 1fr; }
 }
+
+/* Formatação para PDF / Impressão */
+@media print {
+    body, main {
+        background: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    .conteiner-app {
+        box-shadow: none !important;
+        border: none !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+    }
+    .barra-acoes, footer {
+        display: none !important;
+    }
+    .cabecalho-curriculo {
+        background: none !important;
+        color: #000 !important;
+        border: none !important;
+        box-shadow: none !important;
+        padding: 1rem 0 !important;
+        border-bottom: 2px solid #000 !important;
+        border-radius: 0 !important;
+    }
+    .nome-curriculo {
+        color: #000 !important;
+    }
+    .cargo-curriculo, .contatos-curriculo, .contatos-curriculo a {
+        color: #333 !important;
+        text-decoration: none !important;
+    }
+    .titulo-secao {
+        border-bottom: 1px solid #ccc !important;
+        color: #000 !important;
+    }
+    .titulo-secao::before {
+        display: none !important;
+    }
+    .item-curriculo {
+        border: none !important;
+        box-shadow: none !important;
+        padding: 0.5rem 0 !important;
+        margin-top: 0.5rem !important;
+    }
+    .grade-duas-colunas .secao-curriculo {
+        border: none !important;
+        background: none !important;
+        padding: 0 !important;
+    }
+    .etiqueta-destaque {
+        border: 1px solid #ccc !important;
+        background: none !important;
+        color: #000 !important;
+    }
+}

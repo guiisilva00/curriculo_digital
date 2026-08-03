@@ -305,9 +305,12 @@ As classes CSS foram refatoradas para nomes **descritivos e em português**, mel
 - [x] Edição de informações
 - [x] Exclusão com cascata
 - [x] Refatoração semântica de CSS e HTML
-- [ ] Upload de foto (fase 2)
+- [x] Upload de foto (fase 2)
 - [ ] Sistema de autenticação (fase 2)
 - [ ] Exportação para PDF (fase 3)
+- [ ] Validação Server-Side dos dados (fase 3)
+- [ ] Suporte a múltiplos itens (Múltiplas experiências, cursos) (fase 4)
+- [ ] Opção de Compartilhamento via Link Público (fase 4)
 
 ---
 
