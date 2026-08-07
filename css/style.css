@@ -43,7 +43,7 @@ main {
     border-radius: 16px;
     box-shadow: 0 10px 40px -10px rgba(19, 42, 19, 0.08), 0 1px 3px rgba(19, 42, 19, 0.05);
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.6);
+    border: 1px solid rgba(255, 255, 255, 0.6);
     transition: transform 0.3s ease;
 }
 
@@ -51,7 +51,8 @@ main {
     transform: translateY(-2px);
 }
 
-.titulo-pagina, .footer-title {
+.titulo-pagina,
+.footer-title {
     color: var(--evergreen);
     margin-bottom: 1rem;
     font-size: 2.25rem;
@@ -107,7 +108,7 @@ fieldset {
     padding: 2rem;
     margin-bottom: 2rem;
     background: #ffffff;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
 }
 
 legend {
@@ -174,6 +175,18 @@ legend {
     background: rgba(19, 42, 19, 0.16);
     color: var(--evergreen);
     border-color: var(--evergreen);
+}
+
+.botao-cancelar {
+    background: rgba(193, 26, 40, 0.08);
+    color: #7A0C1B;
+    border: 1px solid rgba(193, 26, 40, 0.35);
+}
+
+.botao-cancelar:hover {
+    background: rgba(193, 26, 40, 0.18);
+    color: #4A0510;
+    border-color: #D32F2F;
 }
 
 .botao-alerta {
@@ -305,7 +318,7 @@ footer strong {
     border-bottom: 1px solid #e2e8f0;
 }
 
-.barra-acoes > div {
+.barra-acoes>div {
     display: flex;
     flex-wrap: wrap;
     gap: 0.625rem !important;
@@ -487,6 +500,7 @@ footer strong {
 }
 
 @media (max-width: 640px) {
+
     main,
     .pagina-inicial main {
         align-items: flex-start;
@@ -500,7 +514,7 @@ footer strong {
 
     .grupo-botoes,
     .barra-acoes,
-    .barra-acoes > div {
+    .barra-acoes>div {
         align-items: stretch;
         flex-direction: column;
     }
@@ -542,7 +556,7 @@ footer strong {
     text-align: left;
 }
 
-.conteiner-listagem > .titulo-pagina {
+.conteiner-listagem>.titulo-pagina {
     margin-bottom: 0.65rem;
 }
 
@@ -656,9 +670,23 @@ footer strong {
     filter: brightness(0.97);
 }
 
-.botao-ver { color: var(--evergreen); background: rgba(144, 169, 85, 0.25); border-color: rgba(144, 169, 85, 0.4); }
-.botao-editar { color: #b45309; background: rgba(245, 158, 11, 0.12); border-color: rgba(245, 158, 11, 0.25); }
-.botao-excluir { color: #b91c1c; background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.25); }
+.botao-ver {
+    color: var(--evergreen);
+    background: rgba(144, 169, 85, 0.25);
+    border-color: rgba(144, 169, 85, 0.4);
+}
+
+.botao-editar {
+    color: #b45309;
+    background: rgba(245, 158, 11, 0.12);
+    border-color: rgba(245, 158, 11, 0.25);
+}
+
+.botao-excluir {
+    color: #b91c1c;
+    background: rgba(239, 68, 68, 0.12);
+    border-color: rgba(239, 68, 68, 0.25);
+}
 
 .estado-vazio {
     padding: 3rem 1.5rem;
@@ -671,26 +699,37 @@ footer strong {
 }
 
 @media (max-width: 640px) {
-    .conteiner-listagem { text-align: left; }
-    .grade-curriculos { grid-template-columns: 1fr; }
+    .conteiner-listagem {
+        text-align: left;
+    }
+
+    .grade-curriculos {
+        grid-template-columns: 1fr;
+    }
 }
 
 /* Formatação para PDF / Impressão */
 @media print {
-    body, main {
+
+    body,
+    main {
         background: none !important;
         margin: 0 !important;
         padding: 0 !important;
     }
+
     .conteiner-app {
         box-shadow: none !important;
         border: none !important;
         max-width: 100% !important;
         padding: 0 !important;
     }
-    .barra-acoes, footer {
+
+    .barra-acoes,
+    footer {
         display: none !important;
     }
+
     .cabecalho-curriculo {
         background: none !important;
         color: #000 !important;
@@ -700,31 +739,40 @@ footer strong {
         border-bottom: 2px solid #000 !important;
         border-radius: 0 !important;
     }
+
     .nome-curriculo {
         color: #000 !important;
     }
-    .cargo-curriculo, .contatos-curriculo, .contatos-curriculo a {
+
+    .cargo-curriculo,
+    .contatos-curriculo,
+    .contatos-curriculo a {
         color: #333 !important;
         text-decoration: none !important;
     }
+
     .titulo-secao {
         border-bottom: 1px solid #ccc !important;
         color: #000 !important;
     }
+
     .titulo-secao::before {
         display: none !important;
     }
+
     .item-curriculo {
         border: none !important;
         box-shadow: none !important;
         padding: 0.5rem 0 !important;
         margin-top: 0.5rem !important;
     }
+
     .grade-duas-colunas .secao-curriculo {
         border: none !important;
         background: none !important;
         padding: 0 !important;
     }
+
     .etiqueta-destaque {
         border: 1px solid #ccc !important;
         background: none !important;

@@ -179,7 +179,7 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
 
             <div class="grupo-botoes" style="justify-content: flex-start; margin-top: 20px;">
                 <button type="submit" class="botao">Atualizar Currículo</button>
-                <a href="listar.php" class="botao botao-secundario" style="padding: 15px 30px; border-radius: 8px; text-decoration: none; color: white;">Cancelar</a>
+                <a href="listar.php" class="botao botao-cancelar">Cancelar</a>
             </div>
         </form>
     </section>
