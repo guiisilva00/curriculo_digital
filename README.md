@@ -1,6 +1,6 @@
 # Currículo Digital
 
-Projeto educacional para revisar **HTML5, CSS3, PHP e MySQL** com um CRUD completo, sem JavaScript e no padrão Sync Mecatronics.
+Projeto educacional para revisar **HTML5, CSS3, PHP e MySQL** com um CRUD completo, sem JavaScript.
 
 ## Objetivo
 
