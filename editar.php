@@ -276,10 +276,6 @@ $proj = readAll($pdo, "projetos", "dados_pessoais_id = $id")[0] ?? [];
 
 </main>
 
-<?php
-if(file_exists("partials/footer.php")){
-    require_once("partials/footer.php");
-}
-?>
+<?php require_once("partials/footer.php"); ?>
 </body>
 </html>

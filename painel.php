@@ -49,7 +49,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
 
         <div style="display: grid; grid-template-columns: 1fr; gap: 20px;">
             
-            <!-- Dados Básicos -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Dados Pessoais e Contato</h2>
@@ -60,7 +59,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 <p><strong>Email:</strong> <?= htmlspecialchars($contato['email'] ?? 'N/A') ?></p>
             </div>
 
-            <!-- Experiência -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Experiência Profissional</h2>
@@ -80,7 +78,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 <?php endif; ?>
             </div>
 
-            <!-- Formação -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Formação Acadêmica</h2>
@@ -100,7 +97,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 <?php endif; ?>
             </div>
 
-            <!-- Habilidades -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Habilidades</h2>
@@ -120,7 +116,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 <?php endif; ?>
             </div>
 
-            <!-- Idiomas -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Idiomas</h2>
@@ -140,7 +135,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 <?php endif; ?>
             </div>
 
-            <!-- Certificados -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Certificados</h2>
@@ -160,7 +154,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 <?php endif; ?>
             </div>
 
-            <!-- Projetos -->
             <div class="cartao-curriculo" style="background: rgba(255, 255, 255, 0.9); padding: 20px; border-radius: 16px;">
                 <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; padding-bottom: 10px; margin-bottom: 15px;">
                     <h2 style="font-size: 1.2rem; color: var(--navy-blue);">Projetos</h2>

@@ -43,7 +43,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </div>
         </nav>
 
-        <!-- Cabeçalho do CV -->
         <header class="cabecalho-curriculo">
             <div class="foto-perfil-conteiner">
                 <?php if (!empty($curriculo['foto_perfil']) && file_exists($curriculo['foto_perfil'])): ?>
@@ -72,7 +71,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </address>
         </header>
 
-        <!-- Resumo -->
         <?php if(!empty($curriculo['resumo'])): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Resumo Profissional</h2>
@@ -87,7 +85,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </section>
         <?php endif; ?>
 
-        <!-- Experiências -->
         <?php if(!empty($experiencias)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Experiência Profissional</h2>
@@ -110,7 +107,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </section>
         <?php endif; ?>
 
-        <!-- Formação -->
         <?php if(!empty($formacoes)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Formação Acadêmica</h2>
@@ -134,7 +130,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
         <?php endif; ?>
 
         <div class="grade-duas-colunas">
-            <!-- Habilidades -->
             <?php if(!empty($habilidades)): ?>
                 <section class="secao-curriculo">
                     <h2 class="titulo-secao">Habilidades</h2>
@@ -146,7 +141,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
                 </section>
             <?php endif; ?>
 
-            <!-- Idiomas -->
             <?php if(!empty($idiomas)): ?>
                 <section class="secao-curriculo">
                     <h2 class="titulo-secao">Idiomas</h2>
@@ -159,7 +153,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             <?php endif; ?>
         </div>
 
-        <!-- Projetos -->
         <?php if(!empty($projetos)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Projetos</h2>
@@ -182,7 +175,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </section>
         <?php endif; ?>
 
-        <!-- Certificados -->
         <?php if(!empty($certificados)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Certificados</h2>
@@ -204,10 +196,6 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
     </section>
 </main>
 
-<?php 
-if(file_exists("partials/footer.php")){
-    require_once("partials/footer.php"); 
-}
-?>
+<?php require_once("partials/footer.php"); ?>
 </body>
 </html>

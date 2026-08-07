@@ -66,10 +66,6 @@ $curriculos = readAll($pdo, "dados_pessoais");
     </section>
 </main>
 
-<?php 
-if(file_exists("partials/footer.php")){
-    require_once("partials/footer.php"); 
-}
-?>
+<?php require_once("partials/footer.php"); ?>
 </body>
 </html>

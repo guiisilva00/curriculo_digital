@@ -13,16 +13,14 @@ if (!$id || !$curriculo_id || !$tipo) {
 
 $tabelas = [
     'experiencia' => 'experiencias',
-    'formacao' => 'formacao',
-    'habilidade' => 'habilidades',
-    'idioma' => 'idiomas',
+    'formacao'    => 'formacao',
+    'habilidade'  => 'habilidades',
+    'idioma'      => 'idiomas',
     'certificado' => 'certificados',
-    'projeto' => 'projetos'
+    'projeto'     => 'projetos'
 ];
 
 if (array_key_exists($tipo, $tabelas)) {
-    // Para garantir a segurança, seria bom verificar se o item realmente pertence ao currículo,
-    // mas como o projeto é simples e a deleção é via GET (que não é o ideal), faremos de forma básica.
     delete($pdo, $tabelas[$tipo], "id = $id AND dados_pessoais_id = $curriculo_id");
 }
 
