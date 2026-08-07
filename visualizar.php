@@ -4,7 +4,7 @@ require_once("config/crud.php");
 
 $id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 if (!$id) {
-    header("Location: listar_curriculos.php");
+    header("Location: listar.php");
     exit;
 }
 
@@ -16,11 +16,7 @@ if (!$curriculo) {
 $contato = read($pdo, "contatos", "dados_pessoais_id = $id");
 $experiencias = readAll($pdo, "experiencias", "dados_pessoais_id = $id");
 $formacoes = readAll($pdo, "formacao", "dados_pessoais_id = $id");
-$habilidades = readAll($pdo, "habilidades", "dados_pessoais_id = $id");
-$idiomas = readAll($pdo, "idiomas", "dados_pessoais_id = $id");
-$certificados = readAll($pdo, "certificados", "dados_pessoais_id = $id");
 $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
-
 ?>
 <!DOCTYPE html>
 <html lang="pt-BR">
@@ -33,73 +29,61 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
 <body>
 <main>
     <section class="conteiner-app conteiner-formulario">
-        
+
         <nav class="barra-acoes" aria-label="Ações do currículo">
-            <a href="listar_curriculos.php" class="botao botao-secundario">&larr; Voltar para Lista</a>
+            <a href="listar.php" class="botao botao-secundario">&larr; Voltar para Lista</a>
             <div>
-                <a href="painel.php?id=<?= $curriculo['id'] ?>" class="botao botao-alerta">Painel</a>
-                <button onclick="window.print()" class="botao">🖨️ Imprimir / PDF</button>
+                <a href="editar.php?id=<?= $curriculo['id'] ?>" class="botao botao-alerta">Editar</a>
+                <button onclick="window.print()" class="botao">Imprimir / PDF</button>
                 <a href="index.php" class="botao botao-secundario">Tela Inicial</a>
             </div>
         </nav>
 
         <header class="cabecalho-curriculo">
-            <div class="foto-perfil-conteiner">
-                <?php if (!empty($curriculo['foto_perfil']) && file_exists($curriculo['foto_perfil'])): ?>
-                    <img src="<?= htmlspecialchars($curriculo['foto_perfil']) ?>" alt="Foto de <?= htmlspecialchars($curriculo['nome']) ?>" class="foto-perfil-img">
-                <?php else: ?>
-                    <div class="foto-perfil-placeholder">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </div>
-                <?php endif; ?>
-            </div>
             <h1 class="nome-curriculo"><?= htmlspecialchars($curriculo['nome']) ?></h1>
             <p class="cargo-curriculo"><?= htmlspecialchars($curriculo['cargo']) ?></p>
-            
+
             <address class="contatos-curriculo">
                 <?= htmlspecialchars($curriculo['cidade'] . ' - ' . $curriculo['estado']) ?><br>
-                <?php if($contato): ?>
-                    <?php if(!empty($contato['email'])): ?> 📧 <?= htmlspecialchars($contato['email']) ?> | <?php endif; ?>
-                    <?php if(!empty($contato['telefone'])): ?> 📱 <?= htmlspecialchars($contato['telefone']) ?> | <?php endif; ?>
-                    <?php if(!empty($contato['linkedin'])): ?> <a href="<?= htmlspecialchars($contato['linkedin']) ?>" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <?php endif; ?>
-                    <?php if(!empty($contato['github'])): ?> <a href="<?= htmlspecialchars($contato['github']) ?>" target="_blank" rel="noopener noreferrer">GitHub</a> | <?php endif; ?>
-                    <?php if(!empty($contato['site_pessoal'])): ?> <a href="<?= htmlspecialchars($contato['site_pessoal']) ?>" target="_blank" rel="noopener noreferrer">Site Pessoal</a> <?php endif; ?>
+                <?php if ($contato): ?>
+                    <?php if (!empty($contato['email'])): ?> <?= htmlspecialchars($contato['email']) ?> | <?php endif; ?>
+                    <?php if (!empty($contato['telefone'])): ?> <?= htmlspecialchars($contato['telefone']) ?> | <?php endif; ?>
+                    <?php if (!empty($contato['linkedin'])): ?> <a href="<?= htmlspecialchars($contato['linkedin']) ?>" target="_blank" rel="noopener noreferrer">LinkedIn</a> | <?php endif; ?>
+                    <?php if (!empty($contato['github'])): ?> <a href="<?= htmlspecialchars($contato['github']) ?>" target="_blank" rel="noopener noreferrer">GitHub</a> | <?php endif; ?>
+                    <?php if (!empty($contato['site_pessoal'])): ?> <a href="<?= htmlspecialchars($contato['site_pessoal']) ?>" target="_blank" rel="noopener noreferrer">Site Pessoal</a> <?php endif; ?>
                 <?php endif; ?>
             </address>
         </header>
 
-        <?php if(!empty($curriculo['resumo'])): ?>
+        <?php if (!empty($curriculo['resumo'])): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Resumo Profissional</h2>
                 <div class="descricao-item"><?= nl2br(htmlspecialchars($curriculo['resumo'])) ?></div>
             </section>
         <?php endif; ?>
 
-        <?php if(!empty($curriculo['objetivo'])): ?>
+        <?php if (!empty($curriculo['objetivo'])): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Objetivo Profissional</h2>
                 <div class="descricao-item"><?= nl2br(htmlspecialchars($curriculo['objetivo'])) ?></div>
             </section>
         <?php endif; ?>
 
-        <?php if(!empty($experiencias)): ?>
+        <?php if (!empty($experiencias)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Experiência Profissional</h2>
-                <?php foreach($experiencias as $exp): ?>
+                <?php foreach ($experiencias as $exp): ?>
                     <article class="item-curriculo">
                         <div class="cabecalho-item">
                             <h3 class="titulo-item"><?= htmlspecialchars($exp['funcao']) ?></h3>
                             <span class="data-item">
-                                <?= $exp['periodo_inicio'] ? date('m/Y', strtotime($exp['periodo_inicio'])) : '' ?> 
-                                - 
+                                <?= $exp['periodo_inicio'] ? date('m/Y', strtotime($exp['periodo_inicio'])) : '' ?>
+                                -
                                 <?= $exp['trabalho_atual'] ? 'Atualmente' : ($exp['periodo_fim'] ? date('m/Y', strtotime($exp['periodo_fim'])) : '') ?>
                             </span>
                         </div>
                         <div class="subtitulo-item"><?= htmlspecialchars($exp['empresa']) ?></div>
-                        <?php if(!empty($exp['descricao'])): ?>
+                        <?php if (!empty($exp['descricao'])): ?>
                             <div class="descricao-item"><?= nl2br(htmlspecialchars($exp['descricao'])) ?></div>
                         <?php endif; ?>
                     </article>
@@ -107,21 +91,21 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </section>
         <?php endif; ?>
 
-        <?php if(!empty($formacoes)): ?>
+        <?php if (!empty($formacoes)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Formação Acadêmica</h2>
-                <?php foreach($formacoes as $form): ?>
+                <?php foreach ($formacoes as $form): ?>
                     <article class="item-curriculo">
                         <div class="cabecalho-item">
                             <h3 class="titulo-item"><?= htmlspecialchars($form['curso']) ?></h3>
                             <span class="data-item">
-                                <?= $form['periodo_inicio'] ? date('Y', strtotime($form['periodo_inicio'])) : '' ?> 
-                                - 
+                                <?= $form['periodo_inicio'] ? date('Y', strtotime($form['periodo_inicio'])) : '' ?>
+                                -
                                 <?= $form['cursando'] ? 'Cursando' : ($form['periodo_fim'] ? date('Y', strtotime($form['periodo_fim'])) : '') ?>
                             </span>
                         </div>
                         <div class="subtitulo-item"><?= htmlspecialchars($form['instituicao']) ?></div>
-                        <?php if(!empty($form['descricao'])): ?>
+                        <?php if (!empty($form['descricao'])): ?>
                             <div class="descricao-item"><?= nl2br(htmlspecialchars($form['descricao'])) ?></div>
                         <?php endif; ?>
                     </article>
@@ -129,64 +113,22 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
             </section>
         <?php endif; ?>
 
-        <div class="grade-duas-colunas">
-            <?php if(!empty($habilidades)): ?>
-                <section class="secao-curriculo">
-                    <h2 class="titulo-secao">Habilidades</h2>
-                    <div>
-                        <?php foreach($habilidades as $hab): ?>
-                            <span class="etiqueta-destaque"><?= htmlspecialchars($hab['habilidade']) ?> (<?= htmlspecialchars($hab['nivel']) ?>)</span>
-                        <?php endforeach; ?>
-                    </div>
-                </section>
-            <?php endif; ?>
-
-            <?php if(!empty($idiomas)): ?>
-                <section class="secao-curriculo">
-                    <h2 class="titulo-secao">Idiomas</h2>
-                    <div>
-                        <?php foreach($idiomas as $idioma): ?>
-                            <span class="etiqueta-destaque"><?= htmlspecialchars($idioma['idioma']) ?> - <?= htmlspecialchars($idioma['nivel']) ?></span>
-                        <?php endforeach; ?>
-                    </div>
-                </section>
-            <?php endif; ?>
-        </div>
-
-        <?php if(!empty($projetos)): ?>
+        <?php if (!empty($projetos)): ?>
             <section class="secao-curriculo">
                 <h2 class="titulo-secao">Projetos</h2>
-                <?php foreach($projetos as $proj): ?>
+                <?php foreach ($projetos as $proj): ?>
                     <article class="item-curriculo">
                         <div class="cabecalho-item">
                             <h3 class="titulo-item"><?= htmlspecialchars($proj['nome']) ?></h3>
-                            <?php if(!empty($proj['link'])): ?>
+                            <?php if (!empty($proj['link'])): ?>
                                 <a href="<?= htmlspecialchars($proj['link']) ?>" target="_blank" rel="noopener noreferrer" style="color: var(--fern); text-decoration: none; font-size: 0.9rem; font-weight: 600;">Ver Projeto &nearr;</a>
                             <?php endif; ?>
                         </div>
-                        <?php if(!empty($proj['tecnologias'])): ?>
+                        <?php if (!empty($proj['tecnologias'])): ?>
                             <div class="subtitulo-item" style="font-size: 0.9rem; color: var(--hunter-green);">Tecnologias: <?= htmlspecialchars($proj['tecnologias']) ?></div>
                         <?php endif; ?>
-                        <?php if(!empty($proj['descricao'])): ?>
+                        <?php if (!empty($proj['descricao'])): ?>
                             <div class="descricao-item"><?= nl2br(htmlspecialchars($proj['descricao'])) ?></div>
-                        <?php endif; ?>
-                    </article>
-                <?php endforeach; ?>
-            </section>
-        <?php endif; ?>
-
-        <?php if(!empty($certificados)): ?>
-            <section class="secao-curriculo">
-                <h2 class="titulo-secao">Certificados</h2>
-                <?php foreach($certificados as $cert): ?>
-                    <article class="item-curriculo">
-                        <div class="cabecalho-item">
-                            <h3 class="titulo-item"><?= htmlspecialchars($cert['nome']) ?></h3>
-                            <span class="data-item"><?= $cert['data_conclusao'] ? date('d/m/Y', strtotime($cert['data_conclusao'])) : '' ?></span>
-                        </div>
-                        <div class="subtitulo-item"><?= htmlspecialchars($cert['instituicao']) ?></div>
-                        <?php if(!empty($cert['url_certificado'])): ?>
-                            <a href="<?= htmlspecialchars($cert['url_certificado']) ?>" target="_blank" rel="noopener noreferrer" style="color: var(--fern); text-decoration: none; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 5px;">Ver Certificado &nearr;</a>
                         <?php endif; ?>
                     </article>
                 <?php endforeach; ?>
@@ -196,6 +138,8 @@ $projetos = readAll($pdo, "projetos", "dados_pessoais_id = $id");
     </section>
 </main>
 
-<?php require_once("partials/footer.php"); ?>
+<footer role="contentinfo">
+    <p class="footer-text">Desenvolvido por <strong>Guilherme Silva</strong> &copy; 2026</p>
+</footer>
 </body>
 </html>

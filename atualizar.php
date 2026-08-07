@@ -2,48 +2,71 @@
 require_once("config/conexao.php");
 require_once("config/crud.php");
 
-if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST["id"])) {
-    $id = intval($_POST["id"]);
-
-    $curriculo_atual = read($pdo, "dados_pessoais", "id = $id");
-    $foto_caminho = $curriculo_atual['foto_perfil'] ?? null;
-
-    if (isset($_FILES['foto_perfil']) && $_FILES['foto_perfil']['error'] === UPLOAD_ERR_OK) {
-        $extensao = strtolower(pathinfo($_FILES['foto_perfil']['name'], PATHINFO_EXTENSION));
-        if (in_array($extensao, ['jpg', 'jpeg', 'png', 'webp', 'gif'])) {
-            $destino = 'uploads/' . uniqid('foto_') . '.' . $extensao;
-            if (move_uploaded_file($_FILES['foto_perfil']['tmp_name'], $destino)) {
-                if (!empty($curriculo_atual['foto_perfil']) && file_exists($curriculo_atual['foto_perfil'])) {
-                    @unlink($curriculo_atual['foto_perfil']);
-                }
-                $foto_caminho = $destino;
-            }
-        }
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $id = intval($_POST["id"] ?? 0);
+    if (!$id) {
+        header("Location: listar.php");
+        exit;
     }
 
     update($pdo, "dados_pessoais", [
-        "nome"        => $_POST["nome"] ?? '',
-        "cargo"       => $_POST["cargo"] ?? '',
-        "resumo"      => $_POST["resumo"] ?? '',
-        "objetivo"    => $_POST["objetivo"] ?? '',
-        "nascimento"  => !empty($_POST["nascimento"]) ? $_POST["nascimento"] : null,
-        "cidade"      => $_POST["cidade"] ?? '',
-        "estado"      => $_POST["estado"] ?? '',
-        "foto_perfil" => $foto_caminho
+        "nome"       => trim($_POST["nome"] ?? ''),
+        "cargo"      => trim($_POST["cargo"] ?? ''),
+        "resumo"     => trim($_POST["resumo"] ?? ''),
+        "objetivo"   => trim($_POST["objetivo"] ?? ''),
+        "nascimento" => !empty($_POST["nascimento"]) ? $_POST["nascimento"] : null,
+        "cidade"     => trim($_POST["cidade"] ?? ''),
+        "estado"     => trim($_POST["estado"] ?? '')
     ], "id = $id");
 
     update($pdo, "contatos", [
-        "email"       => $_POST["email"] ?? '',
-        "telefone"    => $_POST["telefone"] ?? '',
-        "linkedin"    => $_POST["linkedin"] ?? '',
-        "github"      => $_POST["github"] ?? '',
-        "site_pessoal" => $_POST["site_pessoal"] ?? ''
+        "email"        => trim($_POST["email"] ?? ''),
+        "telefone"     => trim($_POST["telefone"] ?? ''),
+        "linkedin"     => trim($_POST["linkedin"] ?? ''),
+        "github"       => trim($_POST["github"] ?? ''),
+        "site_pessoal" => trim($_POST["site_pessoal"] ?? '')
     ], "dados_pessoais_id = $id");
 
-    header("Location: painel.php?id=$id&sucesso=1");
+    delete($pdo, "experiencias", "dados_pessoais_id = $id");
+    if (!empty(trim($_POST["empresa"] ?? ''))) {
+        create($pdo, "experiencias", [
+            "dados_pessoais_id" => $id,
+            "empresa"           => trim($_POST["empresa"]),
+            "funcao"            => trim($_POST["funcao"] ?? ''),
+            "periodo_inicio"    => !empty($_POST["exp_inicio"]) ? $_POST["exp_inicio"] : null,
+            "periodo_fim"       => !empty($_POST["exp_fim"]) ? $_POST["exp_fim"] : null,
+            "trabalho_atual"    => isset($_POST["trabalho_atual"]) ? 1 : 0,
+            "descricao"         => trim($_POST["exp_descricao"] ?? '')
+        ]);
+    }
+
+    delete($pdo, "formacao", "dados_pessoais_id = $id");
+    if (!empty(trim($_POST["instituicao"] ?? ''))) {
+        create($pdo, "formacao", [
+            "dados_pessoais_id" => $id,
+            "instituicao"       => trim($_POST["instituicao"]),
+            "curso"             => trim($_POST["curso"] ?? ''),
+            "periodo_inicio"    => !empty($_POST["formacao_inicio"]) ? $_POST["formacao_inicio"] : null,
+            "periodo_fim"       => !empty($_POST["formacao_fim"]) ? $_POST["formacao_fim"] : null,
+            "cursando"          => isset($_POST["cursando"]) ? 1 : 0,
+            "descricao"         => trim($_POST["formacao_descricao"] ?? '')
+        ]);
+    }
+
+    delete($pdo, "projetos", "dados_pessoais_id = $id");
+    if (!empty(trim($_POST["projeto_nome"] ?? ''))) {
+        create($pdo, "projetos", [
+            "dados_pessoais_id" => $id,
+            "nome"              => trim($_POST["projeto_nome"]),
+            "descricao"         => trim($_POST["projeto_descricao"] ?? ''),
+            "tecnologias"       => trim($_POST["projeto_tecnologias"] ?? ''),
+            "link"              => trim($_POST["projeto_link"] ?? '')
+        ]);
+    }
+
+    header("Location: listar.php?sucesso=1");
     exit;
 }
 
-header("Location: listar_curriculos.php");
+header("Location: listar.php");
 exit;
-?>
